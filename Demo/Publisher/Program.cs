@@ -1,12 +1,14 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿/**
+  In this demo we create three different jobs using the "FakeBatchJob" class and publish them on three different channels
+**/
+
 using JobStatusReporting;
+
 string redisConnectionString = "localhost:6379";
 
-await using (JobStatusPublisher.Build(redisConnectionString))
+await using (JobStatusPublisher publisher = JobStatusPublisher.Build(redisConnectionString))
 {
   var collector = new JobStatusCollector();
-  var publisher = JobStatusPublisher.Build(redisConnectionString);
-
   var jobs = new List<FakeBatchJob>();
 
   for (var i = 1; i <= 3; i++)
