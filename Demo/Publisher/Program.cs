@@ -24,15 +24,3 @@ await using (JobStatusPublisher.Build(redisConnectionString))
 
   Console.ReadLine();
 }
-
-
-
-
-
-
-
-
-
-
-
-

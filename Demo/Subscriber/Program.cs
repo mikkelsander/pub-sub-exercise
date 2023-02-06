@@ -1,6 +1,5 @@
 ﻿using JobStatusReporting;
 
-
 if (args.Length < 1)
 {
   Console.WriteLine("Job status report channel name missing in command arguments");
@@ -20,7 +19,3 @@ await using (JobStatusSubscriber subscriber = JobStatusSubscriber.Build(redisCon
 
   Console.ReadLine();
 }
-
-
-
-
