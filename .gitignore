@@ -1,6 +1,5 @@
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,visualstudio,dotnetcore
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,visualstudio,dotnetcore
-
 ### DotnetCore ###
 # .NET Core build folders
 bin/
@@ -11,6 +10,7 @@ obj/
 /wwwroot/node_modules
 
 ### VisualStudioCode ###
+.vscode
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
