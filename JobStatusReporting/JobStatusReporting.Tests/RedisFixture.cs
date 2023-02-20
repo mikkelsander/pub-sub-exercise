@@ -9,7 +9,7 @@ namespace JobStatusReporting.Tests
   {
     public IContainer Container { get; }
 
-    public string ConnectionString { get; set; }
+    public string ConnectionString { get; set; } = "";
 
     private int PORT = 6379;
 

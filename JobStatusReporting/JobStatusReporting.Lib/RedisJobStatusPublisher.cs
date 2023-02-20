@@ -2,19 +2,19 @@ namespace JobStatusReporting;
 using StackExchange.Redis;
 using System.Text.Json;
 
-public class JobStatusPublisher : IAsyncDisposable
+public class RedisJobStatusPublisher : IJobStatusPublisher, IAsyncDisposable
 {
   private ISubscriber _conn;
 
-  public JobStatusPublisher(ConnectionMultiplexer redisConnection)
+  public RedisJobStatusPublisher(ISubscriber redisPubSubConnection)
   {
-    _conn = redisConnection.GetSubscriber();
+    _conn = redisPubSubConnection;
   }
 
-  public static JobStatusPublisher Build(string redisConnectionString)
+  public static RedisJobStatusPublisher Build(string redisConnectionString)
   {
     ConnectionMultiplexer redisConnection = ConnectionMultiplexer.Connect(redisConnectionString);
-    return new JobStatusPublisher(redisConnection);
+    return new RedisJobStatusPublisher(redisConnection.GetSubscriber());
   }
 
   public async Task PublishAsync(IAsyncEnumerable<JobStatusReport> statusReports, string channel)

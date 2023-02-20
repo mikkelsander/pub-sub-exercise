@@ -7,19 +7,19 @@ namespace JobStatusReporting.Tests
   public class IntegrationTests : IClassFixture<RedisContainerFixture>
   {
 
-    private readonly RedisContainerFixture _fixture;
+    private readonly RedisContainerFixture _redisFixture;
 
     public IntegrationTests(RedisContainerFixture redisContainerFixture)
     {
-      _fixture = redisContainerFixture;
+      _redisFixture = redisContainerFixture;
     }
 
     [Fact]
     public async void ExampleIntegrationTest()
     {
 
-      await using (JobStatusPublisher publisher = JobStatusPublisher.Build(_fixture.ConnectionString))
-      await using (JobStatusSubscriber subscriber = JobStatusSubscriber.Build(_fixture.ConnectionString))
+      await using (RedisJobStatusPublisher publisher = RedisJobStatusPublisher.Build(_redisFixture.ConnectionString))
+      await using (RedisJobStatusSubscriber subscriber = RedisJobStatusSubscriber.Build(_redisFixture.ConnectionString))
       {
         var testReports = new List<JobStatusReport>() {
           new JobStatusReport
