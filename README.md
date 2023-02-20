@@ -2,7 +2,7 @@
 
 JobStatusReporting is a small library intended to make it easy for your long running batch jobs to produce a live stream of status progression to multiple consumers using Redis Pup/Sub.
 
-# Documentation
+# How to use
 
 The `JobStatusReport` class represents the model of the streamed status updates:
 
@@ -64,4 +64,10 @@ An instance of the `JobStatusSubscriber` class can be used to subscribe to Redis
       Console.WriteLine(report.Print());
     });
   }
+```
+
+# Running Redis locally using Docker
+
+```
+docker run -p 6379:6379 redis
 ```
