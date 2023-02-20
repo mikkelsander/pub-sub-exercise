@@ -6,15 +6,15 @@ public class JobStatusPublisher : IAsyncDisposable
 {
   private ISubscriber _conn;
 
-  public JobStatusPublisher(ConnectionMultiplexer redisConnection)
+  public JobStatusPublisher(ISubscriber redisPubSubConnection)
   {
-    _conn = redisConnection.GetSubscriber();
+    _conn = redisPubSubConnection;
   }
 
   public static JobStatusPublisher Build(string redisConnectionString)
   {
     ConnectionMultiplexer redisConnection = ConnectionMultiplexer.Connect(redisConnectionString);
-    return new JobStatusPublisher(redisConnection);
+    return new JobStatusPublisher(redisConnection.GetSubscriber());
   }
 
   public async Task PublishAsync(IAsyncEnumerable<JobStatusReport> statusReports, string channel)
