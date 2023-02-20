@@ -6,7 +6,7 @@ using JobStatusReporting;
 
 string redisConnectionString = "localhost:6379";
 
-await using (JobStatusPublisher publisher = JobStatusPublisher.Build(redisConnectionString))
+await using (RedisJobStatusPublisher publisher = RedisJobStatusPublisher.Build(redisConnectionString))
 {
   var collector = new JobStatusCollector();
   var jobs = new List<FakeBatchJob>();

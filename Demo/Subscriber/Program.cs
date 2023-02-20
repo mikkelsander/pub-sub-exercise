@@ -14,7 +14,7 @@ if (args.Length < 1)
 var reportChannel = args[0];
 var redisConnectionString = "localhost:6379";
 
-await using (JobStatusSubscriber subscriber = JobStatusSubscriber.Build(redisConnectionString))
+await using (RedisJobStatusSubscriber subscriber = RedisJobStatusSubscriber.Build(redisConnectionString))
 {
   await subscriber.SubscribeAsync(reportChannel, (JobStatusReport report) =>
   {
