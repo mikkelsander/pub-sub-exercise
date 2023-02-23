@@ -1,3 +1,6 @@
+This repo is the result of a take home challenge for a job interview where the theme was "build something using Pup/Sub in C#"
+
+
 # JobStatusReporting
 
 JobStatusReporting is a small library intended to make it easy for your long running batch jobs to produce a live stream of status progression to multiple consumers using Redis Pup/Sub.
